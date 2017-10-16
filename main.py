@@ -42,7 +42,7 @@ def main():
 	print('\nTo prevent your girl friend from getting amused by her old one \033[1myou have to stop the clown which should come to the party\033[0m.\n')
 	c_pause()
 	print('\nOr should I say, the clown \033[1mARMY\033[0m?\n')
-	c_pause()	
+	c_pause()
 	
 	# Init
 	pygame.init()
@@ -146,7 +146,7 @@ def main():
 	
 	# Create window
 	screen = pygame.display.set_mode(size)
-	pygame.display.set_caption('Shoot\'em up')
+	pygame.display.set_caption('Clown Hammer')
 	
 	start_game()
 	
@@ -198,20 +198,22 @@ def main():
 						hammer_state = 1
 						tile = tile_for_pos(pygame.mouse.get_pos())
 						tile = tile[0] + game_grid[0] * tile[1]
-						if game_matrix[tile] > 1 and game_matrix[tile] < 12.0:
-							game_matrix[tile] = 5
-							explosion_sound.play()
-							score += 1
-							if spawn_delay <= 640:
-								spawn_delay -= 6
+						if tile >= 0 and tile < len(game_matrix):
+							if game_matrix[tile] > 1 and game_matrix[tile] < 12.0:
+								game_matrix[tile] = 5
+								explosion_sound.play()
+								score += 1
+								if spawn_delay <= 640:
+									spawn_delay -= 6
+								else:
+									spawn_delay = math.floor(spawn_delay * spawn_accelaretor)
+									spawn_accelaretor = spawn_accelaretor + (1 - spawn_accelaretor) * 0.3
+							elif game_matrix[tile] > 11.0:
+								game_matrix[tile] = 9.0
+								confetti_sound.play()
+								lose()
 							else:
-								spawn_delay = math.floor(spawn_delay * spawn_accelaretor)
-								spawn_accelaretor = spawn_accelaretor + (1 - spawn_accelaretor) * 0.3
-						elif game_matrix[tile] > 11.0:
-							game_matrix[tile] = 9.0
-							confetti_sound.play()
-							lose()
-							
+								hammer_sound.play()
 						else:
 							hammer_sound.play()
 			elif waiter + 1000 <= pygame.time.get_ticks():
