@@ -133,6 +133,7 @@ def main():
 	can_gift_3 = pygame.image.load('assets/can_gift_3.png')
 	can_gift_3 = pygame.transform.scale(can_gift_3, (tile_size, tile_size))
 	
+	icon = pygame.image.load('assets/icon.png')	
 	
 	# Items		0			1				2				3			4				5				6			7				8				9				10			11				12			13			14			15
 	items = (can_idle, can_clown_up_1, can_clown_up_2, can_clown_up_3, can_clown, can_explode_1, can_explode_2, can_explode_3, can_explode_4, can_confetti_1, can_confetti_2, can_confetti_3, can_gift_1, can_gift_2, can_gift_3, can_gift, can_gift_3, can_gift_2, can_gift_1)
@@ -147,6 +148,8 @@ def main():
 	# Create window
 	screen = pygame.display.set_mode(size)
 	pygame.display.set_caption('Clown Hammer')
+	
+	pygame.display.set_icon(icon)
 	
 	start_game()
 	
