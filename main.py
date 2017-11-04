@@ -4,7 +4,7 @@
 # Images created by myself with GIMP: https://www.gimp.org
 # Sounds created with Bfxr: http://www.bfxr.net
 # Music created with BeepBox: http://www.beepbox.co
-# Font ModerDOS created by Jayvee Enaguas: https://http://www.dafont.com/moder-dos-437.font
+# Font ModerDOS created by Jayvee Enaguas: https://www.dafont.com/moder-dos-437.font
 
 
 import sys, pygame, random, math, platform, os
