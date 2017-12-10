@@ -228,8 +228,8 @@ def main():
 		# Blit items
 		pos = 0
 		for item in game_matrix:
-			if(item != 0.0):s
-                            screen.blit(items[int(math.floor(item))].getImage(), pos_of_tile(pos % game_grid[0], pos // game_grid[0]))
+			if(item != 0.0):
+				screen.blit(items[int(math.floor(item))].getImage(), pos_of_tile(pos % game_grid[0], pos // game_grid[0]))
 			pos += 1
 		
 		# Confetti
