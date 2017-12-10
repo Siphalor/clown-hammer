@@ -4,7 +4,7 @@
 # Images created by myself with GIMP: https://www.gimp.org
 # Sounds created with Bfxr: http://www.bfxr.net
 # Music created with BeepBox: http://www.beepbox.co
-# Font ModerDOS created by Jayvee Enaguas: https://http://www.dafont.com/moder-dos-437.font
+# Font ModerDOS created by Jayvee Enaguas: https://www.dafont.com/moder-dos-437.font
 
 
 import sys, pygame, random, math, platform, os
@@ -228,8 +228,8 @@ def main():
 		# Blit items
 		pos = 0
 		for item in game_matrix:
-			if(item != 0.0):
-				screen.blit(items[math.floor(item)].getImage(), pos_of_tile(pos % game_grid[0], pos // game_grid[0]))
+			if(item != 0.0):s
+                            screen.blit(items[int(math.floor(item))].getImage(), pos_of_tile(pos % game_grid[0], pos // game_grid[0]))
 			pos += 1
 		
 		# Confetti
