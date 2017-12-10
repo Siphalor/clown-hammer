@@ -51,7 +51,7 @@ def main():
 	pygame.mouse.set_visible(False)
 	pygame.time.set_timer(TICK_EVENT, tick_delay)
 	
-	# music
+	# Music
 	pygame.mixer.music.load('assets/loop.wav')
 	pygame.mixer.music.play(-1)
 	
@@ -78,41 +78,30 @@ def main():
 	table = pygame.image.load('assets/table.png')
 	table = pygame.transform.scale(table, size)
 	
-	hammer = pygame.image.load('assets/hammer.png')
-	hammer = pygame.transform.scale(hammer, (tile_size, tile_size))
-	hammer_1 = pygame.image.load('assets/hammer_use_1.png')
-	hammer_1 = pygame.transform.scale(hammer_1, (tile_size, tile_size))
-	hammer_2 = pygame.image.load('assets/hammer_use_2.png')
-	hammer_2 = pygame.transform.scale(hammer_2, (tile_size, tile_size))
+	# -> Hammer
+	hammer = Item('assets/hammer.png')
+	hammer_1 = Item('assets/hammer_use_1.png')
+	hammer_2 = Item('assets/hammer_use_2.png')
 	
-	can_idle = pygame.image.load('assets/can_idle.png')
-	can_idle = pygame.transform.scale(can_idle, (tile_size, tile_size))
-	
-	can_clown = pygame.image.load('assets/can_clown.png')
-	can_clown = pygame.transform.scale(can_clown, (tile_size, tile_size))
-	can_clown_up_1 = pygame.image.load('assets/can_clown_up_1.png')
-	can_clown_up_1 = pygame.transform.scale(can_clown_up_1, (tile_size, tile_size))
-	can_clown_up_2 = pygame.image.load('assets/can_clown_up_2.png')
-	can_clown_up_2 = pygame.transform.scale(can_clown_up_2, (tile_size, tile_size))
-	can_clown_up_3 = pygame.image.load('assets/can_clown_up_3.png')
-	can_clown_up_3 = pygame.transform.scale(can_clown_up_3, (tile_size, tile_size))
-	
-	can_explode_1 = pygame.image.load('assets/can_explode_1.png')
-	can_explode_1 = pygame.transform.scale(can_explode_1, (tile_size, tile_size))
-	can_explode_2 = pygame.image.load('assets/can_explode_2.png')
-	can_explode_2 = pygame.transform.scale(can_explode_2, (tile_size, tile_size))
-	can_explode_3 = pygame.image.load('assets/can_explode_3.png')
-	can_explode_3 = pygame.transform.scale(can_explode_3, (tile_size, tile_size))
-	can_explode_4 = pygame.image.load('assets/can_explode_4.png')
-	can_explode_4 = pygame.transform.scale(can_explode_4, (tile_size, tile_size))
-	
-	can_confetti_1 = pygame.image.load('assets/can_confetti_1.png')
-	can_confetti_1 = pygame.transform.scale(can_confetti_1, (tile_size, tile_size))
-	can_confetti_2 = pygame.image.load('assets/can_confetti_2.png')
-	can_confetti_2 = pygame.transform.scale(can_confetti_2, (tile_size, tile_size))
-	can_confetti_3 = pygame.image.load('assets/can_confetti_3.png')
-	can_confetti_3 = pygame.transform.scale(can_confetti_3, (tile_size, tile_size))
-	
+	# -> Tiles (Items)
+	can_idle = Item('assets/can_idle.png')
+	can_clown = Item('assets/can_clown.png')
+	can_clown_up_1 = Item('assets/can_clown_up_1.png')
+	can_clown_up_2 = Item('assets/can_clown_up_2.png')
+	can_clown_up_3 = Item('assets/can_clown_up_3.png')
+	can_explode_1 = Item('assets/can_explode_1.png')
+	can_explode_2 = Item('assets/can_explode_2.png')
+	can_explode_3 = Item('assets/can_explode_3.png')
+	can_explode_4 = Item('assets/can_explode_4.png')
+	can_confetti_1 = Item('assets/can_confetti_1.png')
+	can_confetti_2 = Item('assets/can_confetti_2.png')
+	can_confetti_3 = Item('assets/can_confetti_3.png')
+	can_gift = Item('assets/can_gift.png')
+	can_gift_1 = Item('assets/can_gift_1.png')
+	can_gift_2 = Item('assets/can_gift_2.png')
+	can_gift_3 = Item('assets/can_gift_3.png')
+
+	# -> Confetti overlays
 	confetti_1 = pygame.image.load('assets/confetti_1.png')
 	confetti_1 = pygame.transform.scale(confetti_1, size)
 	confetti_2 = pygame.image.load('assets/confetti_2.png')
@@ -124,15 +113,7 @@ def main():
 	confetti_5 = pygame.image.load('assets/confetti_5.png')
 	confetti_5 = pygame.transform.scale(confetti_5, size)
 	
-	can_gift = pygame.image.load('assets/can_gift.png')
-	can_gift = pygame.transform.scale(can_gift, (tile_size, tile_size))
-	can_gift_1 = pygame.image.load('assets/can_gift_1.png')
-	can_gift_1 = pygame.transform.scale(can_gift_1, (tile_size, tile_size))
-	can_gift_2 = pygame.image.load('assets/can_gift_2.png')
-	can_gift_2 = pygame.transform.scale(can_gift_2, (tile_size, tile_size))
-	can_gift_3 = pygame.image.load('assets/can_gift_3.png')
-	can_gift_3 = pygame.transform.scale(can_gift_3, (tile_size, tile_size))
-	
+	# -> Icon (extremly buggy)
 	icon = pygame.image.load('assets/icon.png')	
 	
 	# Items		0			1				2				3			4				5				6			7				8				9				10			11				12			13			14			15
@@ -145,20 +126,18 @@ def main():
 	# Confetti		0			1			2			3			4
 	confetti = (confetti_5, confetti_4, confetti_3, confetti_2, confetti_1)
 	
-	# Create window
+	# Window setup
 	screen = pygame.display.set_mode(size)
 	pygame.display.set_caption('Clown Hammer')
-	
 	pygame.display.set_icon(icon)
 	
+	# Start!
 	start_game()
+	last_tick_time = pygame.time.get_ticks()
 	
 	# First blit
 	screen.blit(background, (0, 0))
 	pygame.display.flip()
-	
-	# Start!
-	last_tick_time = pygame.time.get_ticks()
 	
 	while 1:
 		for event in pygame.event.get():
@@ -166,10 +145,13 @@ def main():
 				return
 			if game_state:
 				if event.type == TICK_EVENT:
+					# TICK
+					# -> Hammer animation
 					if hammer_state != 0 and hammer_state < len(hammer_frames):
 						hammer_state += 1
 					if hammer_state == len(hammer_frames):
 						hammer_state = 0
+					# -> Matrix updates (+item animation)
 					for i in range(len(game_matrix)):
 						if(game_matrix[i] == 0.0):
 							continue
@@ -196,6 +178,7 @@ def main():
 							lose()
 						if(game_matrix[i] < 4.0):
 							game_matrix[i] += 1.0
+				# ONCLICK
 				if event.type == MOUSEBUTTONDOWN:
 					if hammer_state == 0:
 						hammer_state = 1
@@ -219,6 +202,7 @@ def main():
 								hammer_sound.play()
 						else:
 							hammer_sound.play()
+			# Wait time after game over is over
 			elif waiter + 1000 <= pygame.time.get_ticks():
 				if event.type == MOUSEBUTTONDOWN:
 					start_game()
@@ -226,15 +210,14 @@ def main():
 						hammer_state = 1
 						explosion_sound.play()
 		
-		
 		screen.blit(background, (0, 0))
 		
 		if game_state:
-			# tick
+			# Item tick
 			if pygame.time.get_ticks() - last_tick_time >= spawn_delay:
-				# choose random position
+				# Choose random position
 				pos = random.randint(0,len(game_matrix) - 1)
-				# choose clown / gift
+				# Choose clown / gift
 				if game_matrix[pos] == 0.0:
 					if random.random() < 0.8:
 						game_matrix[pos] = 1.0
@@ -246,7 +229,7 @@ def main():
 		pos = 0
 		for item in game_matrix:
 			if(item != 0.0):
-				screen.blit(items[math.floor(item)], pos_of_tile(pos % game_grid[0], pos // game_grid[0]))
+				screen.blit(items[math.floor(item)].getImage(), pos_of_tile(pos % game_grid[0], pos // game_grid[0]))
 			pos += 1
 		
 		# Confetti
@@ -261,9 +244,10 @@ def main():
 			text = font.render(str(score), False, (255, 255, 255))
 			screen.blit(text, (size[1] // 5 * 3, size[0] // 2 - text.get_width() // 2))
 		
+		# Blit hammer
 		hammer_pos[0] = pygame.mouse.get_pos()[0] - math.floor(tile_size / 16 * 2.5)
 		hammer_pos[1] = pygame.mouse.get_pos()[1] - math.floor(tile_size / 16 * 13.5)
-		screen.blit(hammer_frames[hammer_state], hammer_pos)
+		screen.blit(hammer_frames[hammer_state].getImage(), hammer_pos)
 		
 		pygame.display.flip()
 
@@ -303,6 +287,13 @@ def start_game():
 	background.convert()
 	for x in range(game_grid[0]):
 		for y in range(game_grid[1]):
-			background.blit(can_idle, (pos_of_tile(x, y)))
+			background.blit(can_idle.getImage(), (pos_of_tile(x, y)))
+
+class Item:
+	def __init__(self, path):
+		self.image = pygame.image.load(path)
+		self.image = pygame.transform.scale(self.image, (tile_size, tile_size))
+	def getImage(self):
+		return self.image
 
 if __name__ == '__main__': main()
